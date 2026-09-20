@@ -22,7 +22,7 @@ Your booking details:
 - Amount: ${amount:.2f} AUD
 - String: {string}
 - Tension: {tension} lbs
-- Unique stinging service: {unique_id}
+- Unique Stringing service: {unique_id}
 
 Next step is to drop off your racket at Unit 1 3 Cameron Avenue, Manly.
 

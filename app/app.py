@@ -2,7 +2,7 @@ import streamlit as st
 import uuid 
 from payment import SquarePaymentUI
 
-st.set_page_config(page_title="Record session", layout="wide")
+st.set_page_config(page_title="Re-String Tennis Northern Beaches", layout="wide")
 
 string_options = {
     "-- Select --": 0,

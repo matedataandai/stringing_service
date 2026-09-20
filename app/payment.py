@@ -137,7 +137,7 @@ def SquarePaymentUI(amount=10.00, description="Video recording for Court 1 at Te
                 outcome = SquareAPI.get_tender_outcome(st.session_state.order_id)
                 if outcome is not None:
                     break
-                status_box.info(f"Waiting for payment... ({elapsed}s elapsed) - You have {POLL_TIMEOUT_SECONDS}s to make payment.")
+                status_box.info(f"Waiting for payment... ({elapsed}s elapsed) - You have {POLL_TIMEOUT_SECONDS/60:.1f}m to make payment.")
                 time.sleep(POLL_INTERVAL_SECONDS)
                 elapsed += POLL_INTERVAL_SECONDS
             if outcome is not None:
