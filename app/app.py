@@ -9,7 +9,7 @@ string_options = {
     "-- Select --": 0,
     "Yonex Polytour Pro 1.25 - Purple - $30": 30,
     "Babolat RPM Blast 1.30 - Black - $30": 30,
-    "Cheapest String - 1.30 - Black - $20": 20,
+    "Cheapest String - 1.30 - Black - $15": 15,
     "BYO String - $0": 0
 }
 payment_options = ["Card", "Cash"]
