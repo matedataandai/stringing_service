@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install --no-cache-dir streamlit dotenv requests
+RUN pip install --no-cache-dir streamlit dotenv requests boto3
 
 EXPOSE 8501
 

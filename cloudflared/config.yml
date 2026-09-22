@@ -1,0 +1,7 @@
+tunnel: restringtennisnorthernbeaches-streamlit
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  - hostname: restringtennisnorthernbeaches.com
+    service: http://streamlit:8501
+  - service: http_status:404
