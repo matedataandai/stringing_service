@@ -1,18 +1,21 @@
-import os
 import time
 import uuid
 import requests
 import streamlit as st
 import time
-from dotenv import load_dotenv
-load_dotenv()
+import boto3
+import json
+
+client = boto3.client("secretsmanager", region_name="ap-southeast-2")
+response = client.get_secret_value(SecretId="restring_secrets")
+secrets_aws = json.loads(response["SecretString"])
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 
-SQUARE_ACCESS_TOKEN = os.getenv("SQUARE_ACCESS_TOKEN", "")
-SQUARE_LOCATION_ID = os.getenv("SQUARE_LOCATION_ID", "")
-SQUARE_ENVIRONMENT = os.getenv("SQUARE_ENVIRONMENT", "")  # sandbox | production
+SQUARE_ACCESS_TOKEN = secrets_aws.get("SQUARE_ACCESS_TOKEN", "")
+SQUARE_LOCATION_ID = secrets_aws.get("SQUARE_LOCATION_ID", "")
+SQUARE_ENVIRONMENT = secrets_aws.get("SQUARE_ENVIRONMENT", "")  # sandbox | production
 
 BASE_URL = (
     "https://connect.squareupsandbox.com"

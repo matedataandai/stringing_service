@@ -20,5 +20,3 @@ services:
       - TUNNEL_TOKEN=${TUNNEL_CLOUDFLARE}
     volumes:
       - ./cloudflared:/etc/cloudflared
-
-

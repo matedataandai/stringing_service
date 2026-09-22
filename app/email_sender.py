@@ -1,15 +1,16 @@
 from email.message import EmailMessage
-import ssl
 import smtplib
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import boto3
+import json
 
+client = boto3.client("secretsmanager", region_name="ap-southeast-2")
+response = client.get_secret_value(SecretId="restring_secrets")
+secrets_aws = json.loads(response["SecretString"])
 
 class EmailSender:
     def __init__(self):
-        self.sender_email = os.getenv("EMAIL_ADDRESS")
-        self.sender_password = os.getenv("EMAIL_PASSWORD")
+        self.sender_email = secrets_aws.get("EMAIL_ADDRESS")
+        self.sender_password = secrets_aws.get("EMAIL_PASSWORD")
 
     def send_email(self, receiver_email, string, tension, unique_id,amount):
         msg = EmailMessage()
