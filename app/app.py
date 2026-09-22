@@ -8,7 +8,7 @@ st.set_page_config(page_title="Re-String Tennis Northern Beaches", layout="wide"
 string_options = {
     "-- Select --": 0,
     "Yonex Polytour Pro 1.25 - Purple - $30": 30,
-    "Babolat RPM Blast 1.30 - Black - $35": 35,
+    "Babolat RPM Blast 1.30 - Black - $30": 30,
     "Cheapest String - 1.30 - Black - $20": 20,
     "BYO String - $0": 0
 }
