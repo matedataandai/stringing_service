@@ -14,9 +14,9 @@ class EmailSender:
     def send_email(self, receiver_email, string, tension, unique_id,amount):
         msg = EmailMessage()
         msg["From"] = self.sender_email
-        msg["To"] = receiver_email
-        msg["Subject"] = "Thank you for your booking - Northern Beaches Tennis Stringing Services"
-        body = f"""Thank you for your booking with Northern Beaches Tennis Stringing Services!
+        msg["To"] = f'{receiver_email}, {self.sender_email}'
+        msg["Subject"] = "Thank you for your booking - Northern Beaches Tennis Re-stringing Services"
+        body = f"""Thank you for your booking with Northern Beaches Tennis Re-stringing Services!
 
 Your booking details:
 - Amount: ${amount:.2f} AUD
@@ -29,17 +29,15 @@ Next step is to drop off your racket at Unit 1 3 Cameron Avenue, Manly.
 Feel free to reach out to us at 0406292441 or reply to this email if you have any questions or need further assistance.
 
 Best regards,
-The Northern Beaches Stringing Services Team"""
+The Northern Beaches Re-stringing Services Team"""
         
         msg.set_content(body)
 
-        context = ssl.create_default_context()
-
         try:
-            print("Connecting to Gmail...")
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-                server.login(self.sender_email, self.sender_password)
-                server.send_message(msg)
-            print("Email sent successfully!")
+          print("Connecting to Gmail SMTP server...")
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(self.sender_email, self.sender_password)
+            server.send_message(msg)
+          print("Email sent successfully via Gmail!")
         except Exception as e:
-            print(f"An error occurred: {e}")
+          print(f"Error: {e}")
