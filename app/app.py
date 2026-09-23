@@ -52,7 +52,7 @@ if st.session_state.proceed_to_payment and string != "-- Select --" and receiver
         if st.session_state.get("outcome") == "ACCEPTED":
             email_sender = EmailSender()
             email_sender.send_email(receiver_email, string, tension, unique_id, amount)
-            st.success(f"✅ Payment successful! An email will be sent to **{receiver_email}** with the payment receipt and instructions.")
+            st.success(f"✅ Payment successful! An email will be sent to **{receiver_email}** with the payment receipt and instructions. Please check your spam folder in case can't find it.")
             st.balloons()
             
     elif payment == "Cash":
