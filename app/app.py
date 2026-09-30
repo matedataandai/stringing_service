@@ -8,6 +8,14 @@ st.set_page_config(
     layout="centered",
     page_icon="profile.png",
 )
+import base64
+from pathlib import Path
+
+@st.cache_data
+def img_to_base64(path: str) -> str:
+    return base64.b64encode(Path(path).read_bytes()).decode()
+
+logo_b64 = img_to_base64("profile.png")
 
 # ---------- Styling ----------
 st.markdown(
@@ -23,6 +31,14 @@ st.markdown(
     }
     .hero h1 {margin: 0 0 .3rem; font-size: 2rem; color: white;}
     .hero p {margin: 0; font-size: 1.05rem; opacity: .95;}
+    .hero-top {display: flex; align-items: center; gap: 1rem; margin-bottom: .6rem;}
+    .hero-logo {
+        width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+        border: 3px solid rgba(255,255,255,.85);
+        box-shadow: 0 4px 12px rgba(0,0,0,.25);
+        flex-shrink: 0;
+    }
+    .hero-top h1 {margin: 0;}
 
     .badges {
     display: grid;
@@ -77,9 +93,12 @@ if "email_sent" not in st.session_state:
 
 # ---------- Hero + trust ----------
 st.markdown(
-    """
+    f"""
     <div class="hero">
-        <h1>🎾 Northern Beaches Re-Stringing</h1>
+        <div class="hero-top">
+            <img class="hero-logo" src="data:image/png;base64,{logo_b64}" alt="Logo">
+            <h1> Northern Beaches Re-Stringing</h1>
+        </div>
         <p>Your racquet, strung with care by a local player who knows the game.
         Fresh strings, accurate tension, and a smooth, hassle-free booking.</p>
     </div>
