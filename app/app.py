@@ -31,11 +31,11 @@ st.markdown(
     margin-bottom: 1.2rem;
     }
     .badge {
-        flex: 1 1 150px; background: #f4f9f6; border: 1px solid #d5e8dd;
-        border-radius: 12px; padding: .8rem; text-align: center; color: #1b4332;
-        font-size: .9rem; line-height: 1.3;
+        background: #f4f9f6; border: 1px solid #d5e8dd;
+        border-radius: 12px; padding: .7rem .4rem; text-align: center; color: #1b4332;
+        font-size: .8rem; line-height: 1.25;
     }
-    .badge span {display: block; font-size: 1.5rem; margin-bottom: .2rem;}
+    .badge span {display: block; font-size: 1.4rem; margin-bottom: .2rem;}
 
     .summary {
         background: #f4f9f6; border: 1px solid #d5e8dd; border-radius: 12px;
