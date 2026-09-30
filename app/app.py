@@ -6,7 +6,7 @@ from email_sender import EmailSender
 st.set_page_config(
     page_title="Re-String Tennis Northern Beaches",
     layout="centered",
-    page_icon="Logos.png",
+    page_icon="profile.png",
 )
 
 # ---------- Styling ----------
