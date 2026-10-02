@@ -2,6 +2,7 @@ import streamlit as st
 import uuid
 from payment import SquarePaymentUI
 from email_sender import EmailSender
+import json
 
 st.set_page_config(
     page_title="Re-String Tennis Northern Beaches",
@@ -73,13 +74,9 @@ st.markdown(
 )
 
 # ---------- Data ----------
-string_options = {
-    "-- Select --": 0,
-    "Yonex Polytour Pro 1.25 - Purple - $30": 30,
-    "Babolat RPM Blast 1.30 - Black - $30": 30,
-    "Cheapest String - 1.30 - Black - $15": 15,
-    "BYO String - $0": 0,
-}
+with open("strings.json", "r") as f:
+    strings_data = json.load(f)
+string_options = strings_data
 payment_options = ["Card", "Cash"]
 LABOUR = 20
 
@@ -133,13 +130,14 @@ with st.container(border=True):
         payment = st.selectbox("Payment method",payment_options,help="Not comfortable paying online? No problem. Choose Cash and pay when you drop off or pick up.")
     delivery = st.selectbox(
         "Delivery method",
-        ["Drop off and Pickup - Address will be shared on email"],
+        ["Drop off and Pickup - Address will be shared on email - $0","We collect and deliver - $10 extra charge"],
     )
+    delivery_option = 10 if delivery.startswith("We collect") else 0
 if payment == "Card":
     st.caption("💵 Prefer not to pay online? Select **Cash** above and pay in person. No card needed.")
 else:
-    st.caption("💵 Cash selected. You'll pay when you drop off or pick up your racquet.")
-amount = string_options[string] + LABOUR
+    st.caption("💵 Cash selected. You'll pay when you drop off or we collect your racquet.")
+amount = string_options[string] + LABOUR + delivery_option
 
 # ---------- Price summary ----------
 st.markdown(
@@ -147,6 +145,7 @@ st.markdown(
     <div class="summary">
         <div class="row"><span>String</span><span>${string_options[string]:.2f}</span></div>
         <div class="row"><span>Stringing service</span><span>${LABOUR:.2f}</span></div>
+        <div class="row"><span>Delivery</span><span>${delivery_option:.2f}</span></div>
         <div class="row total"><span>Total</span><span>${amount:.2f} AUD</span></div>
     </div>
     """,
