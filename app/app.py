@@ -138,7 +138,9 @@ with st.container(border=True):
         with col1:
             address = st.text_input("Pickup address", placeholder="Street, Suburb")
         with col2:
-            postcode = int(st.text_input("Postcode", placeholder=2095))
+            postcode = st.text_input("Postcode", placeholder=2095)
+            if postcode:
+                postcode = int(postcode)
             if postcode and postcode >=2084 and postcode <=2108:
                 st.success("✅ Postcode is within Northern Beaches. Collection available.")
             else:
