@@ -130,7 +130,7 @@ with st.container(border=True):
         payment = st.selectbox("Payment method",payment_options,help="Not comfortable paying online? No problem. Choose Cash and pay when you drop off or pick up.")
     delivery = st.selectbox(
         "Delivery method",
-        ["Drop off and Pickup - Address will be shared on email - $0","We collect and deliver - $10 extra charge"],
+        ["Drop off and Pickup - Address will be shared on email - $0","We collect and deliver - $10 extra charge (available only in Northern Beaches)"],
     )
     delivery_option = 10 if delivery.startswith("We collect") else 0
 if payment == "Card":
