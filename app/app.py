@@ -133,6 +133,18 @@ with st.container(border=True):
         ["Drop off and Pickup - Address will be shared on email - $0","We collect and deliver - $10 extra charge (available only in Northern Beaches)"],
     )
     delivery_option = 10 if delivery.startswith("We collect") else 0
+    if delivery_option == 10:
+        col1, col2 = st.columns(2)
+        with col1:
+            address = st.text_input("Pickup address", placeholder="Street, Suburb")
+        with col2:
+            postcode = int(st.text_input("Postcode", placeholder=2095))
+            if postcode and postcode >=2084 and postcode <=2108:
+                st.success("✅ Postcode is within Northern Beaches. Collection available.")
+            else:
+                st.warning("⚠️ Postcode is outside Northern Beaches. Collection not available. Please choose Drop off and Pickup.")
+                delivery = "Drop off and Pickup - Address will be shared on email - $0"
+                delivery_option = 0
 if payment == "Card":
     st.caption("💵 Prefer not to pay online? Select **Cash** above and pay in person. No card needed.")
 else:
