@@ -1,6 +1,6 @@
 import streamlit as st
 import uuid
-from payment import SquarePaymentUI
+from payment_square import SquarePaymentUI
 from email_sender import EmailSender
 import json
 
