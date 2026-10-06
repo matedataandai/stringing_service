@@ -12,7 +12,7 @@ class EmailSender:
         self.sender_email = secrets_aws.get("EMAIL_ADDRESS")
         self.sender_password = secrets_aws.get("EMAIL_PASSWORD")
 
-    def send_email(self, receiver_email, string, tension, unique_id,amount, delivery,address=None,postcode=None):
+    def send_email(self, receiver_email, string, tension, unique_id,amount, delivery,address,postcode):
         if delivery.startswith("We collect"):
           delivery_string = f"We collect your racquet from your address - {address}, {str(postcode)}" 
         else:
