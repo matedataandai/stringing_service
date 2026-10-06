@@ -36,7 +36,6 @@ Feel free to reach out to us at 0406292441 or reply to this email if you have an
 
 Best regards,
 The Northern Beaches Re-stringing Services Team"""
-        print(body)
         
         msg.set_content(body)
 
