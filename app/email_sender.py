@@ -14,7 +14,7 @@ class EmailSender:
 
     def send_email(self, receiver_email, string, tension, unique_id,amount, delivery,address,postcode):
         if delivery.startswith("We collect"):
-          delivery_string = f"We collect your racquet from your address - {address}, {str(postcode)}" 
+          delivery_string = f"We collect your racquet from your address - {str(address)}, {str(postcode)}" 
         else:
            delivery_string = "Next step is to drop off your racket at Unit 1 3 Cameron Avenue, Manly."
         msg = EmailMessage()
@@ -36,6 +36,7 @@ Feel free to reach out to us at 0406292441 or reply to this email if you have an
 
 Best regards,
 The Northern Beaches Re-stringing Services Team"""
+        print(body)
         
         msg.set_content(body)
 
