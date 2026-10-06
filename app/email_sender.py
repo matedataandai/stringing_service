@@ -12,7 +12,11 @@ class EmailSender:
         self.sender_email = secrets_aws.get("EMAIL_ADDRESS")
         self.sender_password = secrets_aws.get("EMAIL_PASSWORD")
 
-    def send_email(self, receiver_email, string, tension, unique_id,amount):
+    def send_email(self, receiver_email, string, tension, unique_id,amount, delivery,address=None):
+        if delivery.startswith("We collect"):
+          delivery_string = f"We collect your racquet from your address - {address}" 
+        else:
+           delivery_string = "Next step is to drop off your racket at Unit 1 3 Cameron Avenue, Manly."
         msg = EmailMessage()
         msg["From"] = self.sender_email
         msg["To"] = f'{receiver_email}, {self.sender_email}'
@@ -23,9 +27,10 @@ Your booking details:
 - Amount: ${amount:.2f} AUD
 - String: {string}
 - Tension: {tension} lbs
+- Delivery: {delivery}
 - Unique Stringing service: {unique_id}
 
-Next step is to drop off your racket at Unit 1 3 Cameron Avenue, Manly.
+{delivery_string}
 
 Feel free to reach out to us at 0406292441 or reply to this email if you have any questions or need further assistance.
 
