@@ -227,4 +227,4 @@ st.write("")
 _, mid, _ = st.columns([1, 2, 1])
 with mid:
     st.image("poweredbymatedata.png", width='stretch')
-st.markdown('<p class="footer-note">Locally run · Northern Beaches, Sydney</p>', unsafe_allow_html=True)
+st.markdown('<p class="footer-note">Locally run · Northern Beaches, Sydney · For enquiries, contact us at restringnorthernbeaches@gmail.com</p>', unsafe_allow_html=True)
