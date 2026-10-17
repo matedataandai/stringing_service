@@ -80,7 +80,7 @@ with open("strings.json", "r") as f:
     strings_data = json.load(f)
 string_options = strings_data
 payment_options = ["Card", "Cash"]
-LABOUR = 20
+LABOUR = 15
 
 # ---------- Session state ----------
 if "proceed_to_payment" not in st.session_state:
