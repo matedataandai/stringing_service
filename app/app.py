@@ -2,7 +2,9 @@ import streamlit as st
 import uuid
 from payment_square import SquarePaymentUI
 from email_sender import EmailSender
+from pixel_tracking import inject_meta_pixel
 import json
+
 
 st.set_page_config(
     page_title="Re-String Tennis Northern Beaches",
@@ -17,7 +19,7 @@ def img_to_base64(path: str) -> str:
     return base64.b64encode(Path(path).read_bytes()).decode()
 
 logo_b64 = img_to_base64("profile.png")
-
+inject_meta_pixel()
 # ---------- Styling ----------
 st.markdown(
     """
