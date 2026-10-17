@@ -7,7 +7,7 @@ import json
 
 
 st.set_page_config(
-    page_title="Re-String Tennis Northern Beaches",
+    page_title="Restring Tennis Northern Beaches",
     layout="centered",
     page_icon="profile.png",
 )
@@ -96,7 +96,7 @@ st.markdown(
     <div class="hero">
         <div class="hero-top">
             <img class="hero-logo" src="data:image/png;base64,{logo_b64}" alt="Logo">
-            <h1> Northern Beaches Re-Stringing</h1>
+            <h1> Northern Beaches Restringing</h1>
         </div>
         <p>Your racquet, strung with care by a local player who knows the game.
         Fresh strings, accurate tension, and a smooth, hassle-free booking.</p>
