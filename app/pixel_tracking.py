@@ -33,11 +33,3 @@ def inject_meta_pixel():
     
     # Render the component (height=0 keeps it invisible)
     components.html(pixel_code, height=0, width=0)
-
-# --- App Layout ---
-st.title("My Streamlit App with Meta Pixel")
-
-# Replace 'YOUR_PIXEL_ID' with your actual Meta Pixel ID
-inject_meta_pixel("YOUR_PIXEL_ID")
-
-st.write("Welcome to the application! Your PageView event has been tracked.")
