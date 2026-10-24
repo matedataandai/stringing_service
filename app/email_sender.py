@@ -12,11 +12,11 @@ class EmailSender:
         self.sender_email = secrets_aws.get("EMAIL_ADDRESS")
         self.sender_password = secrets_aws.get("EMAIL_PASSWORD")
 
-    def send_email(self, receiver_email, string, tension, unique_id,amount, delivery,address,postcode):
+    def send_email(self, receiver_email, string, tension, unique_id,amount, delivery,address,postcode,payment_method):
         if delivery.startswith("We collect"):
           delivery_string = f"We collect your racquet from your address - {str(address)}, {str(postcode)}" 
         else:
-           delivery_string = "Next step is to drop off your racket at Unit 1 3 Cameron Avenue, Manly."
+           delivery_string = "Next step is to drop off your racquet at Unit 1 3 Cameron Avenue, Manly."
         msg = EmailMessage()
         msg["From"] = self.sender_email
         msg["To"] = f'{receiver_email}, {self.sender_email}'
@@ -25,6 +25,7 @@ class EmailSender:
 
 Your booking details:
 - Amount: ${amount:.2f} AUD
+- Payment method: {payment_method}
 - String: {string}
 - Tension: {tension} lbs
 - Delivery: {delivery}

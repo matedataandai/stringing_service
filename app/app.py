@@ -192,21 +192,23 @@ if ready:
         )
         if st.session_state.get("outcome") == "ACCEPTED":
             if not st.session_state.email_sent:
-                EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None)
+                EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None,payment)
                 st.session_state.email_sent = True
             st.success(
                 f"✅ Payment successful! An email will be sent to **{receiver_email}** with the "
                 "payment receipt and instructions. Please check your spam folder if you can't find it."
+                f"check your spam folder if you can't find it."
             )
             st.balloons()
 
     elif payment == "Cash":
         if not st.session_state.email_sent:
-            EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None)
+            EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None,payment)
             st.session_state.email_sent = True
         st.success(
             f"✅ You have selected cash payment. An email will be sent to **{receiver_email}** "
             f"with the payment instructions. The total to be paid is **${amount:.2f} AUD**."
+            f"check your spam folder if you can't find it."
         )
         st.balloons()
 else:
