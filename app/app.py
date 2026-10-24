@@ -196,8 +196,8 @@ if ready:
                 st.session_state.email_sent = True
             st.success(
                 f"✅ Payment successful! An email will be sent to **{receiver_email}** with the "
-                "payment receipt and instructions. Please check your spam folder if you can't find it."
-                f"check your spam folder if you can't find it."
+                "payment receipt and instructions. Please check your spam folder if you can't find it.\n"
+                f"Check your spam folder if you can't find it."
             )
             st.balloons()
 
@@ -207,8 +207,8 @@ if ready:
             st.session_state.email_sent = True
         st.success(
             f"✅ You have selected cash payment. An email will be sent to **{receiver_email}** "
-            f"with the payment instructions. The total to be paid is **${amount:.2f} AUD**."
-            f"check your spam folder if you can't find it."
+            f"with the payment instructions. The total to be paid is **${amount:.2f} AUD**.\n"
+            f"Check your spam folder if you can't find it."
         )
         st.balloons()
 else:
