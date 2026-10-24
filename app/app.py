@@ -192,7 +192,7 @@ if ready:
         )
         if st.session_state.get("outcome") == "ACCEPTED":
             if not st.session_state.email_sent:
-                EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None,payment)
+                EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,payment,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None)
                 st.session_state.email_sent = True
             st.success(
                 f"✅ Payment successful! An email will be sent to **{receiver_email}** with the "
@@ -203,7 +203,7 @@ if ready:
 
     elif payment == "Cash":
         if not st.session_state.email_sent:
-            EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None,payment)
+            EmailSender().send_email(receiver_email, string, tension, unique_id, amount,delivery,payment,address if delivery.startswith("We collect") else None,postcode if delivery.startswith("We collect") else None)
             st.session_state.email_sent = True
         st.success(
             f"✅ You have selected cash payment. An email will be sent to **{receiver_email}** "
